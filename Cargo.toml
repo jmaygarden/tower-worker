@@ -1,0 +1,32 @@
+[package]
+authors = ["Judge Maygarden <judge@jmaygarden.com>"]
+description = """
+Provides Tower layers focused on wrapping services with asynchronous worker tasks
+that may also make requests to the wrapped service.
+"""
+documentation = "https://docs.rs/tower-worker/0.1.0"
+categories = ["asynchronous", "network-programming"]
+edition = "2018"
+homepage = "https://github.com/jmaygarden/tower-worker"
+keywords = ["io", "async", "non-blocking", "futures", "service"]
+license = "MIT"
+name = "tower-worker"
+readme = "README.md"
+repository = "https://github.com/jmaygarden/tower-worker"
+version = "0.1.0"
+
+[features]
+default = ["full"]
+full = ["periodic"]
+periodic = ["tokio/time"]
+
+[dependencies]
+futures-util = "0.3"
+pin-project = "1"
+tokio = { version = "1", optional = true, features = ["rt"] }
+tower-layer = "0.3"
+tower-service = "0.3"
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]
